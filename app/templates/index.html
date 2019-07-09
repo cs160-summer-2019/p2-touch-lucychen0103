@@ -16,7 +16,8 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
-
+  <script src = "https://hammerjs.github.io/dist/hammer.js">
+  </script>
 	<style type="text/css">
 		body {
 			margin:0;
@@ -51,6 +52,9 @@
 		.action-complete {
 			background: #ffffff;
 		}
+   
+    
+
 	</style>
 
 </head>
@@ -84,7 +88,48 @@
 		</div>
 	</div>
 	<script>
-	  // your solution here
+    document.addEventListener("DOMContentLoaded", function(event){
+      
+     var rotate  = document.getElementById('rotate-box');
+     var rotateh = new Hammer(rotate);
+     rotateh.get('rotate').set({ enable: true });
+       rotateh.on("rotate", function(ev) {
+        rotate.textContent = ev.type + " gesture detected.";
+    });
+     
+      
+     var pinch  = document.getElementById('pinch-box');
+     var pinchh = new Hammer(pinch);
+     pinchh.get('pinch').set({ enable: true });
+        pinchh.on("pinch", function(ev) {
+        pinch.textContent = ev.type + " gesture detected.";
+    });
+      
+           var press  = document.getElementById('press-box');
+     var pressh = new Hammer(press);
+        pressh.on("press", function(ev) {
+        press.textContent = ev.type + " gesture detected.";
+    });
+      
+           var pan  = document.getElementById('pan-box');
+     var panh = new Hammer(pan);
+        panh.on("pan", function(ev) {
+        pan.textContent = ev.type + " gesture detected.";
+    });
+      
+     var tap  = document.getElementById('tap-box');
+     var taph = new Hammer(tap);
+        taph.on("tap", function(ev) {
+        tap.textContent = ev.type + " gesture detected.";
+    });
+
+     var swipe  = document.getElementById('swipe-box');
+     var swipeh = new Hammer(swipe);
+        swipeh.on("swipe", function(ev) {
+        swipe.textContent = ev.type + " gesture detected.";
+    });
+          });
+
   </script>
 </body>
 </html>
